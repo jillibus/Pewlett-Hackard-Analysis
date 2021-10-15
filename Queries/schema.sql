@@ -1,58 +1,65 @@
-create table Departments (
-	dept_no varchar(4) NOT NULL,
-	dept_name varchar(40) NOT NULL,
-        primary key (dept_no),
+-- Create Tables
+-- Department Table (Lookup Table) 
+CREATE TABLE Departments (
+	dept_no      VARCHAR(4)  NOT NULL,
+	dept_name    VARCHAR(40) NOT NULL,
+        PRIMARY KEY (dept_no),
 	unique (dept_name)
 );
 
-create table Employees (
-	emp_no int NOT NULL,
-	birth_date date NOT NULL,
-	first_name varchar(15),
-	last_name varchar(20),
-	gender varchar(1),
-	hire_date date,
-	primary key (emp_no)
+-- Titles Table (Lookup Table)
+CREATE TABLE Titles (         
+        emp_no    INT         NOT NULL,
+        title     VARCHAR(20) NOT NULL,
+        from_date DATE        NOT NULL,
+        to_date   DATE,
+        PRIMARY KEY (emp_no,title,from_date)
 );
 
-create table Salaries (
-	emp_no int NOT NULL,
-	salary int NOT NULL,
-	from_date date NOT NULL,
-	to_date date,
-	primary key (emp_no)
+-- Employee Table
+CREATE TABLE Employees (
+	emp_no     INT  NOT NULL,
+	birth_date DATE NOT NULL,
+	first_name VARCHAR(15),
+	last_name  VARCHAR(20),
+	gender     VARCHAR(1),
+	hire_date  DATE,
+	PRIMARY KEY (emp_no)
 );
 
-create table Managers (
-	dept_no varchar(4) NOT NULL,
-	emp_no int NOT NULL,
-	from_date date NOT NULL,
-	to_date date,
-	primary key (dept_no,emp_no)
+-- Salary Table
+CREATE TABLE Salaries (
+	emp_no     INT  NOT NULL,
+	salary     INT  NOT NULL,
+	from_date  DATE NOT NULL,
+	to_date    DATE,
+	PRIMARY KEY (emp_no)
 );
 
-create table Dept_Emp (
-	emp_no int NOT NULL,
-	dept_no varchar(4) NOT NULL,
-	from_date date NOT NULL,
-	to_date date,
-	primary key (emp_no,dept_no)
+-- Manager Table
+CREATE TABLE Managers (
+	dept_no   VARCHAR(4) NOT NULL,
+	emp_no    INT        NOT NULL,
+	from_date DATE       NOT NULL,
+	to_date   DATE,
+	PRIMARY KEY (dept_no,emp_no)
 );
 
-create table Titles (
-	emp_no int NOT NULL,
-	title varchar(20) NOT NULL,
-	from_date date NOT NULL,
-	to_date date,
-	primary key (emp_no,title,from_date)
+-- Department Employee Table
+CREATE TABLE Dept_Emp (
+	emp_no    INT        NOT NULL,
+	dept_no   VARCHAR(4) NOT NULL,
+	from_date DATE       NOT NULL,
+	to_date   DATE,
+	PRIMARY KEY (emp_no,dept_no)
 );
 
-SELECT first_name, last_name
+-- Create new TABLE for retiring employees
+SELECT emp_no, first_name, last_name
 INTO retirement_info
 FROM employees
-WHERE birth_date BETWEEN '1952-01-01' AND '1955-12-31'
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
-
 
 -- Create Foreign Keys
 ALTER TABLE Salaries ADD CONSTRAINT salaries_emp_no_fk
