@@ -50,30 +50,57 @@ This was repeated for all tables and our 6 CSV files were now in a database!
 #### Creation of the retirement tables
 ![retirement_tables](images/deliverable1.png)
 
+Once we had the employee database established, now it was time to begin our work.  We needed to first create our retirement tables!  So now it was time to determine the "WHO" that were eligable for retiring in the next few years.  Then determine what jobs and the quantity of jobs we need to start looking at replacing.
+
+1) Find the employees: emp_no, first_name, last_name, title, hire_date, to_date (are they still working here), that have a birth_date from 1952-1955?
+```
+SELECT e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date
+INTO retirement_titles
+FROM employees e
+INNER JOIN titles t
+ON (e.emp_no = t.emp_no)
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+ORDER BY e.emp_no;
+```
+2) Find the current job of these employees that are retiring.
+```
+SELECT DISTINCT ON (emp_no) emp_no, first_name, last_name, title
+INTO unique_titles
+FROM retirement_titles
+ORDER BY emp_no, from_date DESC;
+```
+3) Find the number of jobs we will be looking at replacing in the next few years.
+```
+SELECT count(title), title 
+INTO retiring_titles
+FROM unique_titles
+GROUP BY title;
+```
+4) Plan to find current employees, born in 1965 and offer them an opportunity to be mentored now before these valuable employees leave, so their knowledge is transferred.
+```
+SELECT DISTINCT ON (e.emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date, 
+    de.from_date, de.to_date, t.titles
+INTO mentorship_eligability
+FROM employees e
+INNER JOIN dept_emp de
+ON (e.emp_no = de.emp_no)
+INNER JOIN titles t
+ON (e.emp_no = t.emp_no)
+WHERE (birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+  AND de.to_date = '9999-01-01'
+ORDER BY e.emp_no;
+```
+
+![export](images/export_mentorship_table.png)
+
 ---
+## Results:
 
+*
+*
+*
+*
 
-Overview of the analysis: Explain the purpose of this analysis.
-Results: Provide a bulleted list with four major points from the two analysis deliverables. Use images as support where needed.
-Summary: Provide high-level responses to the following questions, then provide two additional queries or tables that may provide more insight into the upcoming "silver tsunami."
-How many roles will need to be filled as the "silver tsunami" begins to make an impact?
-Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
-Deliverable 3 Requirements
-Structure, Organization, and Formatting (6 points)
-The written analysis has the following structure, organization, and formatting:
-
-There is a title, and there are multiple sections. (2 pt)
-Each section has a heading and subheading. (2 pt)
-Links to images are working and displayed correctly. (2 pt)
-Analysis (14 points)
-The written analysis has the following:
-
-Overview of the analysis:
-
-The purpose of the new analysis is well defined. (3 pt)
-Results:
-
-There is a bulleted list with four major points from the two analysis deliverables. (6 pt)
-Summary:
+## Summary:
 
 The summary addresses the two questions and contains two additional queries or tables that may provide more insight. (5 pt)
