@@ -96,11 +96,35 @@ ORDER BY e.emp_no;
 ---
 ## Results:
 
-*
-*
-*
-*
+* _How many employees are in the "silver tsunami"?_ The number of employees that can retire, relatively soon, is quite high, the total is: 90,398, which is 37.65% of their total laborforce. This is quite substantial. 
 
-## Summary:
+* _How many positions are in the "silver tsunami"?_
+![by titles](images/Retirement_cnt_title.png)  
+    
+    * As you can see from the above table, the heaviest hitting positions are the Senior Staff and Senior Engineer positions.  Those alone make up 57,570 positions, or 64% of the retirement pool of the "silver tsunami".  That is quite a bit of knowledge leaving Pewlett Hackard.
+    
+* _Do we have on hand ready staff to take over the majority of these positions?_
 
-The summary addresses the two questions and contains two additional queries or tables that may provide more insight. (5 pt)
+![mentor](images/Mentorship.png)
+
+    * If we base the numbers on the existing rules of the Mentorship Program, then no we do not have enough employees in the mentorship program. The numbers are just too low, based on the numbers of retiree's.
+
+## Summary
+
+Based on the analysis of the employee data, more programs will have to be implemented to perform the following:
+*  Prepare each department for the upcoming departures for their Senior Staff members
+    * Training on all areas of expertise and transfer of knowledge to a minimum of 2 people
+    * Mentoring of staff of their expertise
+    
+*  Increase of eligability requirements for more employees to join the Mentorship Program
+    * This will help with the immediate need for transfer of knowledge in all departments
+    
+*  Evaluations of what positions these Mentorships will fill, based on the timeline of the Retiree, and progress reports of the Mentee.
+*  Immediate job postings for those positions we can fill internally, and promote within.
+*  Immediate job postings for positions looking for candidates outside Pewlett Hackard.
+
+The management really needs to focus on plans to backfill these positions with trained staff before this amount of staff leave.  As you can see from the table above, the numbers are quite high in Senior Staff and Senior Engineer positions.  This makes sense as it takes years in the position to earn this level. Fresh out of college or even 10 years out of college does not qualify you for a Senior level position. 
+
+That is why I believe the Pewlett Hackard new Mentoring program, placing Midlevel staff members with Senior Level staff members is the best way to mentor these collegues to take over the Senior level staff positions as they retire. 
+
+Jill Hughes
