@@ -80,7 +80,7 @@ GROUP BY title;
 ```
 SELECT DISTINCT ON (e.emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date, 
     de.from_date, de.to_date, t.titles
-INTO mentorship_eligability
+INTO mentorship_eligibility
 FROM employees e
 INNER JOIN dept_emp de
 ON (e.emp_no = de.emp_no)
@@ -91,27 +91,34 @@ WHERE (birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY e.emp_no;
 ```
 
+#### Export of the CSV Files
 ![export](images/export_mentorship_table.png)
 
 ---
 ## Results:
 
-* _How many employees are in the "silver tsunami"?_ The number of employees that can retire, relatively soon, is quite high, the total is: 90,398, which is 37.65% of their total laborforce. This is quite substantial. 
+* _How many employees are in the "silver tsunami"?_ 
+ 
+    * The number of employees that can retire, relatively soon, is quite high, the total is: 90,398, which is 37.65% of their total laborforce. This is quite substantial. 
 
 * _How many positions are in the "silver tsunami"?_
+
+    * As you can see from the table below, the heaviest hitting positions are the Senior Staff and Senior Engineer positions.  Those alone make up 57,570 positions, or 64% of the retirement pool of the "silver tsunami".  That is quite a bit of knowledge leaving Pewlett Hackard.
+ 
 ![by titles](images/Retirement_cnt_title.png)  
-    
-    * As you can see from the above table, the heaviest hitting positions are the Senior Staff and Senior Engineer positions.  Those alone make up 57,570 positions, or 64% of the retirement pool of the "silver tsunami".  That is quite a bit of knowledge leaving Pewlett Hackard.
     
 * _Do we have on hand ready staff to take over the majority of these positions?_
 
+    * If we base the numbers on the existing rules of the Mentorship Program, then no, we do not have enough employees in the mentorship program. The numbers are just too low, based on the numbers of retiree's.
+    
 ![mentor](images/Mentorship.png)
 
-    * If we base the numbers on the existing rules of the Mentorship Program, then no we do not have enough employees in the mentorship program. The numbers are just too low, based on the numbers of retiree's.
+---
 
 ## Summary
 
 Based on the analysis of the employee data, more programs will have to be implemented to perform the following:
+
 *  Prepare each department for the upcoming departures for their Senior Staff members
     * Training on all areas of expertise and transfer of knowledge to a minimum of 2 people
     * Mentoring of staff of their expertise
