@@ -15,37 +15,42 @@ Bobby is an up and coming HR Analyst whose task is to perform employee research.
 * Data Source: employees.csv, departments.csv, titles.csv, salaries.csv, dept_managers.csv, dept_emp.csv
 * Software: Visual Studio 1.61.1, pgAdmin 4, Postgresql 14
 
-
 ### Process
 
 #### _**Entity Relationship Diagram**_ diagram was developed based on the data provided in the 6 CSV files. Once a design of how these 6 CSV files related to each other and the design was agreed upon, the schema of the database was written in SQL and the database was created with the tables based off of the **ERD**.
 
-![ERD](images/QuickDBD-export-mine.png)
+<img src="images/QuickDBD-export-mine.png" width="500" />
 
-_Entity Relationship Design_ :  
-1)  Each box represents each CSV file, showing the column headers in each file, and the datatype of the data in each column. This will become a _Table_ in the Database.
-2)  Lines from one one _Table_ to each other show the column that matches in each table that defines the _relationship_. 
+* _Entity Relationship Design_ :  
+    * Each box represents each CSV file, showing the column headers in each file, and the datatype of the data in each column. This will become a _Table_ in the Database.
+    * Lines from one one _Table_ to each other show the column that matches in each table that defines the _relationship_. 
  
-![relationships](images/relationships.png)
-1) one to one:    example:  each employee has one desk and each desk is assigned to one employee
-2) one to many:   example:  one manager to many employees and one department holds many employees
-3) many to many:  example:  many departments are in many locations and many locations hold many departments
+<img src="images/relationship.png" width="250" />
+
+* Entity Relationship Markers
+    * one to one:    example:  each employee has one desk and each desk is assigned to one employee
+    * one to many:   example:  one manager to many employees and one department holds many employees
+    * many to many:  example:  many departments are in many locations and many locations hold many departments
 
 ----
 #### Creation of the tables - SQL
-
-![create tables](queries/schema.sql)
+![create tables](images/schema_sql.png)
 
 ---
 
 #### Import of the CSV Files
+![import](images/import_dept_mgr.png)
 
+Once the tables were created with the _schema.sql_, the next step was to go into _pgAdmin_, right click onto the corresponding table, and choose Import/Export. The pop-up window would come up, you choose the file, and let the system know that there are headers in the file and that the file uses commas as column separaters.  The application would then upload the data into the system and you can then verify that the data all uploaded with a simple _select count(*) from table_name;_
 
+This was repeated for all tables and our 6 CSV files were now in a database!
+
+---
 
 #### Creation of the retirement tables
+![retirement_tables](images/deliverable1.png)
 
-
-
+---
 
 
 Overview of the analysis: Explain the purpose of this analysis.
